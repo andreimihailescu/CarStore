@@ -5,11 +5,11 @@ using System.Web;
 
 namespace CarStore.Models
 {
-    public class Customer
+    public class Car
     {
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime BirthDate { get; set; }
+        public string SerialNumber { get; set; }
+        public string Model { get; set; }
+        public string Brand { get; set; }
     }
 }
