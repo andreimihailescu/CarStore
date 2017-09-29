@@ -27,9 +27,26 @@ namespace CarStore.Controllers
         // GET: Car/Create
         public ActionResult Create()
         {
-            return View();
+            return View("CarForm");
         }
 
+        // GET: Car/Details/id
+        public ActionResult Details(int id)
+        {
+            var car = _context.Cars.SingleOrDefault(c => c.Id == id);
+
+            return View("Details", car);
+        }
+
+        // GET: Car/Edit/id
+        public ActionResult Edit(int id)
+        {
+            var car = _context.Cars.SingleOrDefault(c => c.Id == id);
+
+            return View("CarForm", car);
+        }
+
+        // GET: Car/Save
         public ActionResult Save(Car car)
         {
             if (car.Id == 0)
@@ -37,6 +54,16 @@ namespace CarStore.Controllers
                 _context.Cars.Add(car);
             }
 
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var car = _context.Cars.SingleOrDefault(c => c.Id == id);
+
+            _context.Cars.Remove(car);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
