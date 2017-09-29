@@ -9,19 +9,37 @@ namespace CarStore.Controllers
 {
     public class CarController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public CarController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         // GET: Car
         public ActionResult Index()
         {
-            var car = new Car()
+            var cars = _context.Cars.ToList();
+
+            return View(cars);
+        }
+
+        // GET: Car/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public ActionResult Save(Car car)
+        {
+            if (car.Id == 0)
             {
-                Id = 1,
-                Model = "M3",
-                Brand = "BMW",
-                SerialNumber = "xc45612"
+                _context.Cars.Add(car);
+            }
 
-            };
+            _context.SaveChanges();
 
-            return View(car);
+            return RedirectToAction("Index");
         }
     }
 }
