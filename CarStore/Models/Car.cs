@@ -11,6 +11,7 @@ namespace CarStore.Models
         public int Id { get; set; }
 
         [Display(Name = "Serial number")]
+        [Required]
         public string SerialNumber { get; set; }
 
         public string Model { get; set; }

@@ -59,6 +59,7 @@ namespace CarStore.Controllers
             return RedirectToAction("Index");
         }
 
+        // GEt: Car/Delete/id
         public ActionResult Delete(int id)
         {
             var car = _context.Cars.SingleOrDefault(c => c.Id == id);
