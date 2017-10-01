@@ -47,8 +47,16 @@ namespace CarStore.Controllers
         }
 
         // GET: Car/Save
+        [HttpPost]
         public ActionResult Save(Car car)
         {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+
+            if (!ModelState.IsValid)
+            {
+                return View("CarForm", car);
+            }
+
             if (car.Id == 0)
             {
                 _context.Cars.Add(car);
