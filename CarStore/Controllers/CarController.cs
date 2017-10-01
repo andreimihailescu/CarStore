@@ -25,6 +25,7 @@ namespace CarStore.Controllers
         }
 
         // GET: Car/Create
+        [Authorize(Roles = "CanManageCars")]
         public ActionResult Create()
         {
             return View("CarForm");
@@ -39,6 +40,7 @@ namespace CarStore.Controllers
         }
 
         // GET: Car/Edit/id
+        [Authorize(Roles = "CanManageCars")]
         public ActionResult Edit(int id)
         {
             var car = _context.Cars.SingleOrDefault(c => c.Id == id);
@@ -48,6 +50,7 @@ namespace CarStore.Controllers
 
         // GET: Car/Save
         [HttpPost]
+        [Authorize(Roles = "CanManageCars")]
         public ActionResult Save(Car car)
         {
             var errors = ModelState.Values.SelectMany(v => v.Errors);
@@ -67,7 +70,8 @@ namespace CarStore.Controllers
             return RedirectToAction("Index");
         }
 
-        // GEt: Car/Delete/id
+        // GET: Car/Delete/id
+        [Authorize(Roles = "CanManageCars")]
         public ActionResult Delete(int id)
         {
             var car = _context.Cars.SingleOrDefault(c => c.Id == id);
