@@ -21,7 +21,13 @@ namespace CarStore.Controllers
         {
             var cars = _context.Cars.ToList();
 
-            return View(cars);
+            if (User.IsInRole("CanManageCars"))
+            {
+                return View("Index", cars);
+
+            }
+
+            return View("IndexRestricted",cars);
         }
 
         // GET: Car/Create
