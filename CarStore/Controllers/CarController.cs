@@ -53,16 +53,21 @@ namespace CarStore.Controllers
         [Authorize(Roles = "CanManageCars")]
         public ActionResult Save(Car car)
         {
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
-
             if (!ModelState.IsValid)
             {
                 return View("CarForm", car);
             }
+                var carInDb = _context.Cars.SingleOrDefault(c => c.Id == car.Id);
 
-            if (car.Id == 0)
+            if (carInDb == null)
             {
                 _context.Cars.Add(car);
+            }
+            else
+            {
+                carInDb.SerialNumber = car.SerialNumber;
+                carInDb.Brand = car.Brand;
+                carInDb.Model = car.Model;
             }
 
             _context.SaveChanges();
