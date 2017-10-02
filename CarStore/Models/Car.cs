@@ -8,7 +8,7 @@ namespace CarStore.Models
 {
     public class Car
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [Display(Name = "Serial number")]
@@ -17,5 +17,11 @@ namespace CarStore.Models
         public string Model { get; set; }
 
         public string Brand { get; set; }
+
+        public CarType CarType { get; set; }
+
+        [Required]
+        [Display(Name = "Car type")]
+        public byte CarType_Id { get; set; }
     }
 }

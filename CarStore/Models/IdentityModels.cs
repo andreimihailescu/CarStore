@@ -22,6 +22,7 @@ namespace CarStore.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Car> Cars { get; set; }
+        public DbSet<CarType> CarTypes { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

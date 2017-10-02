@@ -20,6 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Brand)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarTypeId)
+        </th>
         <th></th>
     </tr>
 
@@ -35,6 +38,9 @@
             @Html.DisplayFor(modelItem => item.Brand)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.CarType.Name)
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
@@ -43,3 +49,4 @@
 }
 
 </table>
+

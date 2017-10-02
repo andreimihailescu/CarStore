@@ -1,6 +1,8 @@
 ﻿using CarStore.Models;
+using CarStore.Models.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,7 +21,7 @@ namespace CarStore.Controllers
         // GET: Car
         public ActionResult Index()
         {
-            var cars = _context.Cars.ToList();
+            var cars = _context.Cars.Include(c => c.CarType).ToList();
 
             if (User.IsInRole("CanManageCars"))
             {
@@ -27,14 +29,22 @@ namespace CarStore.Controllers
 
             }
 
-            return View("IndexRestricted",cars);
+            return View("IndexRestricted", cars);
         }
 
         // GET: Car/Create
         [Authorize(Roles = "CanManageCars")]
         public ActionResult Create()
         {
-            return View("CarForm");
+            var carTypes = _context.CarTypes.ToList();
+
+            var viewModel = new CarsFormViewModel()
+            {
+                Car = new Car(),
+                CarType = carTypes
+            };
+
+            return View("CarForm", viewModel);
         }
 
         // GET: Car/Details/id
@@ -50,8 +60,15 @@ namespace CarStore.Controllers
         public ActionResult Edit(int id)
         {
             var car = _context.Cars.SingleOrDefault(c => c.Id == id);
+            var carTypes = _context.CarTypes.ToList();
 
-            return View("CarForm", car);
+            var viewModel = new CarsFormViewModel()
+            {
+                Car = car,
+                CarType = carTypes
+            };
+
+            return View("CarForm", viewModel);
         }
 
         // GET: Car/Save
@@ -61,9 +78,18 @@ namespace CarStore.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("CarForm", car);
+                var carTypes = _context.CarTypes.ToList();
+
+                var viewModel = new CarsFormViewModel()
+                {
+                    Car = new Car(),
+                    CarType = carTypes
+                };
+
+                return View("CarForm", viewModel);
             }
-                var carInDb = _context.Cars.SingleOrDefault(c => c.Id == car.Id);
+
+            var carInDb = _context.Cars.SingleOrDefault(c => c.Id == car.Id);
 
             if (carInDb == null)
             {
@@ -74,6 +100,7 @@ namespace CarStore.Controllers
                 carInDb.SerialNumber = car.SerialNumber;
                 carInDb.Brand = car.Brand;
                 carInDb.Model = car.Model;
+                carInDb.CarType_Id = car.CarType_Id;
             }
 
             _context.SaveChanges();

@@ -26,7 +26,9 @@ namespace CarStore.Controllers.Api
         // GET: /api/cars/id
         public IHttpActionResult GetCar(int id)
         {
-            var car = _context.Cars.SingleOrDefault(c => c.Id == id);
+            var car = _context
+                .Cars
+                .SingleOrDefault(c => c.Id == id);
 
             if(car == null)
             {
