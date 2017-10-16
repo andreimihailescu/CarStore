@@ -201,9 +201,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CarsController.cs" />
-    <Compile Include="Controllers\Api\CatsController.cs" />
     <Compile Include="Controllers\CarController.cs" />
-    <Compile Include="Controllers\CatsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -229,13 +227,25 @@
     <Compile Include="Migrations\201710021601007_AddCarType.Designer.cs">
       <DependentUpon>201710021601007_AddCarType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710161809357_AddShowroomModel.cs" />
+    <Compile Include="Migrations\201710161809357_AddShowroomModel.Designer.cs">
+      <DependentUpon>201710161809357_AddShowroomModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710161821363_CarModelCarTypeChange.cs" />
+    <Compile Include="Migrations\201710161821363_CarModelCarTypeChange.Designer.cs">
+      <DependentUpon>201710161821363_CarModelCarTypeChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710161833030_SeedCarTypes.cs" />
+    <Compile Include="Migrations\201710161833030_SeedCarTypes.Designer.cs">
+      <DependentUpon>201710161833030_SeedCarTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\CarType.cs" />
-    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Showroom.cs" />
     <Compile Include="Models\ViewModel\CarsFormViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -301,7 +311,6 @@
     <Content Include="Views\Car\CarForm.cshtml" />
     <Content Include="Views\Car\Index.cshtml" />
     <Content Include="Views\Car\Details.cshtml" />
-    <Content Include="Views\Cats\Index.cshtml" />
     <Content Include="Views\Car\IndexRestricted.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -335,6 +344,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710021601007_AddCarType.resx">
       <DependentUpon>201710021601007_AddCarType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710161809357_AddShowroomModel.resx">
+      <DependentUpon>201710161809357_AddShowroomModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710161821363_CarModelCarTypeChange.resx">
+      <DependentUpon>201710161821363_CarModelCarTypeChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710161833030_SeedCarTypes.resx">
+      <DependentUpon>201710161833030_SeedCarTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

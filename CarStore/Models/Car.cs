@@ -20,8 +20,7 @@ namespace CarStore.Models
 
         public CarType CarType { get; set; }
 
-        [Required]
         [Display(Name = "Car type")]
-        public byte CarType_Id { get; set; }
+        public byte? CarTypeId { get; set; }
     }
 }

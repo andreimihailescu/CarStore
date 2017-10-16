@@ -23,6 +23,7 @@ namespace CarStore.Models
     {
         public DbSet<Car> Cars { get; set; }
         public DbSet<CarType> CarTypes { get; set; }
+        public DbSet<Showroom> Showrooms { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

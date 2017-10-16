@@ -100,7 +100,7 @@ namespace CarStore.Controllers
                 carInDb.SerialNumber = car.SerialNumber;
                 carInDb.Brand = car.Brand;
                 carInDb.Model = car.Model;
-                carInDb.CarType_Id = car.CarType_Id;
+                carInDb.CarTypeId = car.CarTypeId;
             }
 
             _context.SaveChanges();
