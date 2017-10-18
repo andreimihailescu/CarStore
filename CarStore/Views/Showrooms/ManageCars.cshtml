@@ -1,0 +1,19 @@
+﻿@model CarStore.Models.Showroom
+
+@{
+    ViewBag.Title = "ManageCars";
+}
+
+<h2>@Model.Name</h2>
+
+<button id="AddInput" type="button" class="btn-primary">Add input</button>
+
+
+
+<form method="post" action="/Showrooms/SaveManageCars">
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+@section scripts{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ViewScripts/Showrooms/ManageCars.js")"></script>
+}

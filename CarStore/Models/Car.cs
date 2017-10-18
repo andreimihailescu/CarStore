@@ -22,5 +22,10 @@ namespace CarStore.Models
 
         [Display(Name = "Car type")]
         public byte? CarTypeId { get; set; }
+
+        public Showroom Showroom { get; set; }
+
+        [Display(Name = "Showroom")]
+        public int? ShowroomId { get; set; }
     }
 }

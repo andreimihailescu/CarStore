@@ -204,6 +204,7 @@
     <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ShowroomsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -238,6 +239,10 @@
     <Compile Include="Migrations\201710161833030_SeedCarTypes.cs" />
     <Compile Include="Migrations\201710161833030_SeedCarTypes.Designer.cs">
       <DependentUpon>201710161833030_SeedCarTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710161858216_AddShowroomToCarModel.cs" />
+    <Compile Include="Migrations\201710161858216_AddShowroomToCarModel.Designer.cs">
+      <DependentUpon>201710161858216_AddShowroomToCarModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -274,6 +279,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\ViewScripts\Showrooms\ManageCars.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -312,6 +318,12 @@
     <Content Include="Views\Car\Index.cshtml" />
     <Content Include="Views\Car\Details.cshtml" />
     <Content Include="Views\Car\IndexRestricted.cshtml" />
+    <Content Include="Views\Showrooms\Create.cshtml" />
+    <Content Include="Views\Showrooms\Delete.cshtml" />
+    <Content Include="Views\Showrooms\Details.cshtml" />
+    <Content Include="Views\Showrooms\Edit.cshtml" />
+    <Content Include="Views\Showrooms\Index.cshtml" />
+    <Content Include="Views\Showrooms\ManageCars.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -353,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710161833030_SeedCarTypes.resx">
       <DependentUpon>201710161833030_SeedCarTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710161858216_AddShowroomToCarModel.resx">
+      <DependentUpon>201710161858216_AddShowroomToCarModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

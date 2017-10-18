@@ -21,7 +21,10 @@ namespace CarStore.Controllers
         // GET: Car
         public ActionResult Index()
         {
-            var cars = _context.Cars.Include(c => c.CarType).ToList();
+            var cars = _context.Cars
+                .Include(c => c.CarType)
+                .Include(c => c.Showroom)
+                .ToList();
 
             if (User.IsInRole("CanManageCars"))
             {
