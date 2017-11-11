@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CarStore.Models;
 using System.Data.SqlClient;
+using CarStore.Models.ViewModel;
 
 namespace CarStore.Controllers
 {
@@ -132,20 +133,43 @@ namespace CarStore.Controllers
 
             var showroom = db.Showrooms.Find(id);
 
+            var cars = db.Cars.Where(c => c.ShowroomId == id).ToList();
+
             if (showroom == null)
             {
                 return HttpNotFound();
             }
 
-            return View(showroom);
+            var viewModel = new ManagerCarsViewModel()
+            {
+                Showroom = showroom,
+                Cars = cars
+            };
+
+            return View(viewModel);
         }
 
         //Mai e de lucrat
         // POST: Showrooms/SaveManageCars
         [HttpPost]
-        public ActionResult SaveManageCars(ICollection<int> ints)
+        public ActionResult SaveManageCars(ManagerCarsViewModel viewModel)
         {
-            var myList = ints;
+            var cars = viewModel.Cars;
+
+            foreach(var car in cars)
+            {
+                var currentCar = db.Cars.SingleOrDefault(c => c.Id == car.Id);
+
+                if(currentCar == null)
+                {
+                    return HttpNotFound();
+                }
+
+                currentCar.ShowroomId = viewModel.Showroom.Id;
+            }
+
+            db.SaveChanges();
+
             //return View("Index");
             return RedirectToAction("Index");
         }

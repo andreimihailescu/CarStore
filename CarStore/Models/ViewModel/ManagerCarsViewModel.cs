@@ -5,10 +5,10 @@ using System.Web;
 
 namespace CarStore.Models.ViewModel
 {
-    public class CarsFormViewModel
+    public class ManagerCarsViewModel
     {
-        public Car Car { get; set; }
+        public Showroom Showroom { get; set; }
 
-        public List<CarType> CarType { get; set; }
+        public List<Car> Cars { get; set; }
     }
 }
